@@ -1,1 +1,2 @@
 https://realpython.com/python-web-scraping-practical-introduction/
+https://www.pythonforbeginners.com/beautifulsoup/beautifulsoup-4-python

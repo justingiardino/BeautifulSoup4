@@ -9,6 +9,7 @@ def simple_get(url):
         #function closing will free up any network resources once they leave this block of code
         with closing(get(url, stream=True)) as resp:
             if is_good_response(resp):
+                print("Good response")
                 return resp.content
             else:
                 return None

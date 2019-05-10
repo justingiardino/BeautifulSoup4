@@ -9,6 +9,8 @@ def demo_select():
     for p in html.select('p'):
         if p['id'] == 'walrus':
             print(p.text)
+    for tag in html.find_all(True):
+        print(tag.name)
 
 def math_names():
     #Using mathemetician site to get names
@@ -30,4 +32,4 @@ def math_names():
 
 if __name__ == '__main__':
     demo_select()
-    math_names()
+    #math_names()
