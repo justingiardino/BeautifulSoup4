@@ -12,9 +12,9 @@ class HallOfFame(object):
         #year_count keeps track of each yar and how many HOF players played that season
         self.year_count = {}
         self.start_action()
-
-        self.print_all_years()
-        self.print_all_players()
+        self.view_action()
+        # self.print_all_years()
+        # self.print_all_players()
 
     def start_action(self):
         user_in = 0
@@ -32,9 +32,25 @@ class HallOfFame(object):
         print("Data loaded successfully")
 
     def view_action(self):
-        print("What would you like to see")
-        #1) Year with most players
-        #2) Years by Player
+        user_in = 0
+        valid_options = range(1,5)
+        while user_in not in valid_options:
+
+            user_in = int(input("""What would you like to see
+#1) All years and the number of HOF players in that year
+#2) All HOF players and the years they played
+#3) Top Year with the most HOF players
+#4) Top 5 years with the most NBA players
+>"""))
+
+        if user_in == 1:
+            self.print_all_years()
+        elif user_in == 2:
+            self.print_all_players()
+        elif user_in == 3:
+            self.get_top_year()
+        else:
+            print("Something went wrong...")
 
 
     def build_player_dict(self):
@@ -88,6 +104,18 @@ class HallOfFame(object):
     def print_all_players(self):
         for player in self.player_dict.keys():
             print("Player:{}\nYears:{}".format(player,self.player_dict[player]))
+
+    def get_top_year(self):
+
+        top_year = 0
+        top_value = 0
+        for year, year_value in self.year_count.items():
+            if year_value > top_value:
+                top_value = year_value
+                top_year = year
+
+
+        print("Year with most HOF players: {}".format(top_year))
 
 
     def write_to_json(self):
